@@ -98,5 +98,25 @@ public class IntArrayWorker
       }
     }
   }
- 
+  
+  public int getCount(int c){
+      int count=0;
+      for(int[] row:matrix){
+        for(int pixel:row){
+            if(pixel==c)
+            count++;
+        }
+    }
+      return count;
+}
+public int getLargest(){
+    int largest=matrix[0][0];
+    for(int[] row:matrix){
+        for(int pixel:row){
+            if(pixel>largest)
+            largest=pixel;
+        }
+    }
+    return largest;
+}
 }
