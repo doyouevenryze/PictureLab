@@ -109,6 +109,7 @@ public class IntArrayWorker
     }
       return count;
 }
+
 public int getLargest(){
     int largest=matrix[0][0];
     for(int[] row:matrix){
@@ -119,4 +120,14 @@ public int getLargest(){
     }
     return largest;
 }
+
+public int getColTotal(int col){
+    int sum=0;
+    int i=0;
+    for(int[] column:matrix){
+        sum+=matrix[i][col];
+        i++;
+    }
+    return sum;
+    }
 }
