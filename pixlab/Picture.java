@@ -236,13 +236,12 @@ public void mirrorDiagonal()
     }
     System.out.println(count);
   }
-  
+    
   public void mirrorArms()
   {
     int mirrorPoint = 170;
     Pixel leftPixel = null;
     Pixel rightPixel = null;
-    int count = 0;
     Pixel[][] pixels = this.getPixels2D();
     
     
@@ -252,7 +251,6 @@ public void mirrorDiagonal()
       // loop from 13 to just before the mirror point
       for (int col = 103; col < 170; col++)
       {
-        count++;
         leftPixel = pixels[row][col];      
         rightPixel = pixels[row+80]                       
                          [col-7];
@@ -265,7 +263,6 @@ public void mirrorDiagonal()
       // loop from 13 to just before the mirror point
       for (int col = 238; col < 295; col++)
       {
-        count++;
         leftPixel = pixels[row][col];      
         rightPixel = pixels[row+80]                       
                          [col+6 ];
@@ -273,7 +270,39 @@ public void mirrorDiagonal()
         
       }
     }
-    System.out.println(count);
+  }
+  
+  public void mirrorGull()
+  {
+    int mirrorPoint = 170;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+
+    Pixel[][] pixels = this.getPixels2D();
+    
+    
+    // loop through the rows
+    for (int row = 234; row < 321; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 238; col < 345; col++)
+      {
+        leftPixel = pixels[row][col];      
+        rightPixel = pixels[row+30]                       
+                         [col+130 ];
+          if((leftPixel.getRed()>15 && leftPixel.getRed()<150)&&(leftPixel.getGreen()>15&&leftPixel.getGreen()<150)&&(leftPixel.getBlue()>20
+          &&leftPixel.getGreen()<150)){
+              if((leftPixel.getRed()>100 && leftPixel.getRed()<135)&&(leftPixel.getGreen()>110&&leftPixel.getGreen()<150)&&(leftPixel.getBlue()>125
+          &&leftPixel.getGreen()<150)){
+          
+        }
+            else{
+                rightPixel.setColor(leftPixel.getColor());
+            }
+        }
+      }
+    }
+    
   }
   
   /** copy from the passed fromPic to the
@@ -323,6 +352,8 @@ public void mirrorDiagonal()
     this.mirrorVertical();
     this.write("collage.jpg");
   }
+  
+  
   
   
   /** Method to show large changes in color 
