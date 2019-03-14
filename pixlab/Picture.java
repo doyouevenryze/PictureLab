@@ -335,6 +335,32 @@ public void mirrorDiagonal()
       }
     }   
   }
+  
+   public void copy(Picture fromPic, 
+                 int startRow, int startCol,
+                 int fSR,      int fSC,
+                 int fER,      int fEC)
+  {
+    Pixel fromPixel = null;
+    Pixel toPixel = null;
+    Pixel[][] toPixels = this.getPixels2D();
+    Pixel[][] fromPixels = fromPic.getPixels2D();
+    for (int fromRow = fSR, toRow = startRow; 
+         fromRow < fER &&
+         toRow < toPixels.length; 
+         fromRow++, toRow++)
+    {
+      for (int fromCol = fSC, toCol = startCol; 
+           fromCol < fEC &&
+           toCol < toPixels[0].length;  
+           fromCol++, toCol++)
+      {
+        fromPixel = fromPixels[fromRow][fromCol];
+        toPixel = toPixels[toRow][toCol];
+        toPixel.setColor(fromPixel.getColor());
+      }
+    }   
+  }
 
   /** Method to create a collage of several pictures */
   public void createCollage()
@@ -353,6 +379,23 @@ public void mirrorDiagonal()
     this.write("collage.jpg");
   }
   
+  public static void myCollage()
+  {
+    Picture snowman = new Picture("640x480.jpg");
+    Picture snowman1 = new Picture("flower1.jpg");
+    Picture snowman2 = new Picture("flower2.jpg");
+    Picture snowman3 = new Picture("robot.jpg");
+    snowman.explore();
+    snowman.copy(snowman1,0,0,0,0,100,100);
+    snowman.mirrorVertical();
+    snowman.mirrorDiagonal();
+    snowman.zeroBlue();
+    
+    snowman.copy(snowman2,100,100,0,0,100,100);
+    snowman.copy(snowman3,200,200,0,0,65,40);
+    
+    snowman.explore();
+  }
   
   
   

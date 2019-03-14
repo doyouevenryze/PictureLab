@@ -131,9 +131,18 @@ public class PictureTester
   public static void testCopy()
   {
     Picture snowman = new Picture("640x480.jpg");
+    Picture snowman1 = new Picture("flower1.jpg");
     snowman.explore();
-    snowman.copy(snowman,0,0);
+    snowman.copy(snowman1,0,0,0,0,100,100);
     snowman.explore();
+  }
+  
+  public static void testMyCollage()
+  {
+    Picture snowman = new Picture("640x480.jpg");
+    snowman.explore();
+    snowman.myCollage();
+        snowman.explore();
   }
   
   /** Main method for testing.  Every class can have a main
@@ -160,7 +169,8 @@ public class PictureTester
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
-    testCopy();
+    //testCopy();
+    testMyCollage();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
