@@ -79,6 +79,7 @@ public class PictureTester
   public static void testEdgeDetection()
   {
     Picture swan = new Picture("swan.jpg");
+    swan.explore();
     swan.edgeDetection(10);
     swan.explore();
   }
@@ -139,10 +140,11 @@ public class PictureTester
   
   public static void testMyCollage()
   {
-    Picture snowman = new Picture("640x480.jpg");
-    snowman.explore();
-    snowman.myCollage();
-        snowman.explore();
+    Picture snowman1 = new Picture("640x480.jpg");
+    
+    snowman1.myCollage();
+    snowman1.explore();
+    
   }
   
   /** Main method for testing.  Every class can have a main
@@ -170,8 +172,8 @@ public class PictureTester
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
-    testMyCollage();
-    //testEdgeDetection();
+    //testMyCollage();
+    testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();

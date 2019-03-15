@@ -379,22 +379,22 @@ public void mirrorDiagonal()
     this.write("collage.jpg");
   }
   
-  public static void myCollage()
+  public void myCollage()
   {
     Picture snowman = new Picture("640x480.jpg");
     Picture snowman1 = new Picture("flower1.jpg");
     Picture snowman2 = new Picture("flower2.jpg");
     Picture snowman3 = new Picture("robot.jpg");
-    snowman.explore();
-    snowman.copy(snowman1,0,0,0,0,100,100);
-    snowman.mirrorVertical();
-    snowman.mirrorDiagonal();
-    snowman.zeroBlue();
+    this.copy(snowman1,0,0,0,0,100,100);
+    snowman2.mirrorVertical();
+    this.mirrorDiagonal();
+    snowman3.zeroBlue();
     
-    snowman.copy(snowman2,100,100,0,0,100,100);
-    snowman.copy(snowman3,200,200,0,0,65,40);
+    this.copy(snowman2,100,100,0,0,100,100);
+    this.copy(snowman3,200,200,0,0,65,40);
+    this.mirrorVertical();
     
-    snowman.explore();
+    
   }
   
   
@@ -408,7 +408,7 @@ public void mirrorDiagonal()
     Pixel rightPixel = null;
     Pixel[][] pixels = this.getPixels2D();
     Color rightColor = null;
-    for (int row = 0; row < pixels.length; row++)
+    for (int row = 0; row < pixels.length-1; row++)
     {
       for (int col = 0; 
            col < pixels[0].length-1; col++)
@@ -419,8 +419,25 @@ public void mirrorDiagonal()
         if (leftPixel.colorDistance(rightColor) > 
             edgeDist)
           leftPixel.setColor(Color.BLACK);
-        else
+        else{
           leftPixel.setColor(Color.WHITE);
+        }
+      }
+    }
+    for (int row = 0; row < pixels[0].length-1; row++)
+    {
+      for (int col = 0; 
+           col < pixels.length-1; col++)
+      {
+        leftPixel = pixels[col][row];
+        rightPixel = pixels[col+1][row];
+        rightColor = rightPixel.getColor();
+        if (leftPixel.colorDistance(rightColor) > 
+            edgeDist)
+          leftPixel.setColor(Color.BLACK);
+        else{
+          leftPixel.setColor(Color.WHITE);
+        }
       }
     }
   }
